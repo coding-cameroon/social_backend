@@ -12,17 +12,17 @@ const userSchema = new mongoose.Schema(
       unique: true,
       required: true,
     },
-    fillName: {
+    firstName: {
       type: String,
       required: true,
     },
     lastName: {
       type: String,
-      required: true,
     },
     username: {
       type: String,
       required: true,
+      lowercase: true,
     },
     profile: {
       type: String,
