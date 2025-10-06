@@ -4,6 +4,12 @@ import { clerkMiddleware } from "@clerk/express";
 
 import { Env } from "./config/env.js";
 
+import userRouter from "./routes/user.route.js";
+import postRouter from "./routes/post.route.js";
+import likeRouter from "./routes/like.route.js";
+import commentRouter from "./routes/comment.route.js";
+import notoficationRouter from "./routes/notofication.route.js";
+
 const app = express();
 
 // midllewares
@@ -15,6 +21,12 @@ app.use(clerkMiddleware());
 app.use("/api/health", (_, res) => {
   res.send({ success: true, message: "Server is running" });
 });
+
+app.use("/api/users", userRouter);
+app.use("/api/posts", postRouter);
+app.use("/api/likes", likeRouter);
+app.use("/api/comments", commentRouter);
+app.use("/api/notifications", notoficationRouter);
 
 const startServer = async () => {
   try {
